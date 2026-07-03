@@ -1,7 +1,8 @@
 import streamlit as st
+import html
 
 
-class TextModel():
+class TextModel:
     """
     Model for displaying markdown formatted text within
     the scenario.
@@ -15,32 +16,32 @@ class TextModel():
             st.info("Empty read aloud module.")
             return
 
-        stripped_content = []
-        for content in self.content:
-            stripped_content.append(content.strip())
+        cleaned_segments = [html.escape(c.strip()) for c in self.content]
 
-        cleaned_content = '\n&emsp;'.join(stripped_content)
+        paragraphs = "".join([f"<p>{s}</p>" for s in cleaned_segments])
 
-        # TODO Refine the style used for displaying normal text blocks.
         st.markdown(
             f"""
-            <div style="
-                background-color: #fdf6e3;
-                border: 1px solid #dcd3b8;
-                border-left: 10px solid #8b4513;
-                padding: 20px;
-                font-family: 'Georgia', serif;
-                color: #2c2420;
-                line-height: 1.6;
-                box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-                border-radius: 2px;
-                margin-bottom: 20px;">
-                {cleaned_content}
+            <style>
+                .custom-box p {{
+                    margin: 0;
+                    padding-bottom: 5px;
+                    line-height: 1.4;
+                }}
+                .custom-box p:not(:first-child) {{
+                    text-indent: 2em;
+                }}
+                .custom-box p:first-child {{
+                    text-indent: 0;
+                }}
+            </style>
+            <div class="custom-box" style="
+                font-size: 1.1em;
+                padding: 10px;
+                overflow-wrap: break-word;
+                border-radius: 10px;">
+                {paragraphs}
             </div>
             """,
             unsafe_allow_html=True
         )
-
-
-if __name__ == "__main__":
-    TextModel(["This scenario takes place in the undead nation of Geb on the east coast of Garund in the Inner Sea. The PCs travel to the nation’s capital of Mechitar. To learn more about Mechitar, see Lost Omens: Impossible Lands pages 141–157"]).render()

@@ -1,4 +1,6 @@
 import streamlit as st
+import html
+import base64
 
 from pathlib import Path
 
@@ -7,9 +9,24 @@ class ImageModel():
     """
     Model for displaying images within a scenario page.
     """
-    def __init__(self, image_path: Path, width: int = 720):
+    def __init__(self, image_path: Path):
         self.image_path = image_path
-        self.width = width
+        self.image_data = self._get_image_base64()
+
+
+    def _get_image_base64(self):
+        """
+        Converts a local image/svg file to a base64 string.
+        """
+        if not self.image_path.exists():
+            return None
+
+        ext = self.image_path.suffix.lower()
+        mime_type = "image/svg+xml" if ext == ".svg" else f"image/{ext.replace(".", "")}"
+
+        with open(self.image_path, "rb") as f:
+            data = base64.b64encode(f.read()).decode()
+        return f"data:{mime_type};base64,{data}"
 
 
     def render(self):
@@ -17,15 +34,18 @@ class ImageModel():
             st.warning(f"No image found at {self.image_path}")
             return
 
-        st.image(self.image_path, width=self.width)
-
-
-if __name__ == "__main__":
-    root = Path(__file__).resolve().parent.parent
-    bin_dir = Path.joinpath(root, "bin")
-    images = Path.joinpath(bin_dir, "images")
-    season = Path.joinpath(images, "season_7")
-    scenario = Path.joinpath(season, "scenario_21")
-    image = Path.joinpath(scenario, "Area Map.svg")
-
-    ImageModel(image).render()
+        st.markdown(
+            f"""
+            <style>
+            img {{
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }}
+            </style>
+            <div>
+                <img src="{self.image_data}">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
