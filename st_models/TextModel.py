@@ -1,5 +1,4 @@
 import streamlit as st
-import html
 
 
 class TextModel:
@@ -16,32 +15,10 @@ class TextModel:
             st.info("Empty read aloud module.")
             return
 
-        cleaned_segments = [html.escape(c.strip()) for c in self.content]
+        output = self.content[0]
 
-        paragraphs = "".join([f"<p>{s}</p>" for s in cleaned_segments])
+        if len(self.content) > 1:
+            for content in self.content[1:]:
+                output += "\n\n&emsp;" + content
 
-        st.markdown(
-            f"""
-            <style>
-                .custom-box p {{
-                    margin: 0;
-                    padding-bottom: 5px;
-                    line-height: 1.4;
-                }}
-                .custom-box p:not(:first-child) {{
-                    text-indent: 2em;
-                }}
-                .custom-box p:first-child {{
-                    text-indent: 0;
-                }}
-            </style>
-            <div class="custom-box" style="
-                font-size: 1.1em;
-                padding: 10px;
-                overflow-wrap: break-word;
-                border-radius: 10px;">
-                {paragraphs}
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        st.markdown(output)
