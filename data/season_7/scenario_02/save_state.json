@@ -1,29 +1,34 @@
 {
     "characters": [
         {
-            "name": "",
-            "level": 4
+            "id": "f8342534-e6e9-49b5-a630-76253efbc175",
+            "name": "C1",
+            "level": 1
         },
         {
-            "name": "",
-            "level": 4
+            "id": "a682e26e-67f3-425f-98f6-6504c1b4e5e8",
+            "name": "C2",
+            "level": 1
         },
         {
-            "name": "",
-            "level": 4
+            "id": "bac44912-ea2a-404b-804b-3a0b401e0f2a",
+            "name": "C3",
+            "level": 1
         },
         {
-            "name": "",
-            "level": 4
+            "id": "d6ab0fdc-7b35-4c0c-852a-0615c0e13d09",
+            "name": "C4",
+            "level": 1
         },
         {
-            "name": "",
-            "level": 4
+            "id": "3c4e84a7-aeb6-4cfa-9b9c-2dedadcb3269",
+            "name": "C5",
+            "level": 1
         },
         {
-            "name": "",
-            "level": 4
+            "id": "dc7336b4-f8bd-48d0-9292-c6736677d11c",
+            "name": "C6",
+            "level": 1
         }
-    ],
-    "Shipyard Successes": 3
+    ]
 }

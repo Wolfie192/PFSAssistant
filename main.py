@@ -8,12 +8,12 @@ from src import Scenarios, Directory
 def main():
     st.set_page_config(page_title="PFS Society", layout="wide")
 
-    if "selected_season" not in st.session_state:
-        st.session_state["selected_season"] = None
-    if "selected_scenario" not in st.session_state:
-        st.session_state["selected_scenario"] = None
+    if "season" not in st.session_state:
+        st.session_state["season"] = None
+    if "scenario" not in st.session_state:
+        st.session_state["scenario"] = None
 
-    if st.session_state.selected_season and st.session_state.selected_scenario:
+    if st.session_state.season and st.session_state.scenario:
         st.navigation([Path.joinpath(Directory.scenario_dir(), "start_scenario.py")]).run()
 
     else:
@@ -33,8 +33,8 @@ def main():
 
         if season and scenario:
             if st.button("Select Scenario"):
-                st.session_state["selected_season"] = season
-                st.session_state["selected_scenario"] = scenario
+                st.session_state["season"] = season
+                st.session_state["scenario"] = scenario
                 st.rerun()
         else:
             st.button("Select Scenario", disabled=True)

@@ -12,15 +12,14 @@ def adventure_background():
     ])
 
     cols = st.columns(3)
-
     with cols[0]:
-        Image("Venture-Captain Brackett", width=350)
-
-    with cols[1]:
         Image("Nairaba", width=300)
 
-    with cols[2]:
+    with cols[1]:
         Image("Kitsch")
+
+    with cols[2]:
+        Image("Venture-Captain Brackett", width=350)
 
 
 if __name__ == "__main__":
