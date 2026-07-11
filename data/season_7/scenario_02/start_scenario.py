@@ -11,17 +11,18 @@ def start_scenario():
 
     scenario = {
         "Shipyard Sabotage": [
-            page("Roster"),
-            page("Where on Golarion?"),
-            page("Adventure Background"),
-            page("Getting Started"),
-            page("Touring the Shipyards")
+            page("Roster", "roster.py"),
+            page("Where on Golarion?", "where_on_golarion.py"),
+            page("Adventure Background", "adventure_background.py"),
+            page("Getting Started", "getting_started.py"),
+            page("Touring the Shipyards", "touring_the_shipyards.py")
         ],
         "A. Battle for the Docks": [
-            page("A. Battle for the Docks"),
-            page("Dock Defense"),
-            page("Wave 1: Gorilla Warfare (Moderate)"),
-            page("Between the Waves")
+            page("Map", "battle_for_the_docks_map.py"),
+            page("A. Battle for the Docks", "battle_for_the_docks.py"),
+            page("Dock Defense", "dock_defense.py"),
+            page("Wave 1: Gorilla Warfare (Moderate)", "gorilla_warfare.py"),
+            page("Between the Waves", "between_the_waves.py")
         ]
     }
 

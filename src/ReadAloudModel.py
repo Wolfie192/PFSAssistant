@@ -1,9 +1,9 @@
 import streamlit as st
 
 
-class ReadAloudModel:
-    def __init__(self, text: list[str]|str, first_line_indent: bool = True):
-        self.first_line_indent = first_line_indent
+class ReadAloud:
+    def __init__(self, text: list[str]|str, indent: str|None = "first_line"):
+        self.indent = indent
 
         if isinstance(text, list):
             self.content = text
@@ -18,7 +18,7 @@ class ReadAloudModel:
             st.markdown(f":green[{self.content[0]}]")
             if len(self.content) > 1:
                 for text in self.content[1:]:
-                    if self.first_line_indent:
+                    if self.indent == "first_line":
                         st.markdown(f":green[&emsp;{text}]")
                     else:
                         st.markdown(f":green[{text}]")

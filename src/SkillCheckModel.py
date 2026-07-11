@@ -4,12 +4,12 @@ import streamlit as st
 
 from src.DataManager import DataManager
 
-from src.SkillModel import SkillModel
+from src.SkillModel import Skill
 
 
 
-class SkillCheckModel:
-    def __init__(self, name: str, skills: list[SkillModel], model_id: str):
+class SkillCheck:
+    def __init__(self, name: str, skills: list[Skill], model_id: str):
         self.name = name
         self.id = model_id
         self.skills = skills

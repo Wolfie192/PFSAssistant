@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-class SectionHeaderModel:
+class SectionHeader:
     def __init__(self, text: str):
         self.content = [text]
 

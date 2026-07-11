@@ -1,16 +1,16 @@
 import streamlit as st
 
-from src.ImageModel import ImageModel
-from src.SkillCheckModel import SkillCheckModel
-from src.TextModel import TextModel
-from src.SkillModel import SkillModel
+from src.ImageModel import Image
+from src.SkillCheckModel import SkillCheck
+from src.TextModel import Text
+from src.SkillModel import Skill
 
 
 def touring_the_shipyards():
     cols = st.columns(2)
 
     with cols[0]:
-        TextModel([
+        Text([
             "As soon as the PCs are ready, Kitsch rubs her paws together. “Enough talking! Let’s go shopping!”",
             "“Remember, we would like your honest opinion on all the ships you see,” Nairaba says gently. “It’s important to have multiple opinions when we’re considering a purchase as large as a ship.”",
             "Nairaba and Kitsch lead the way down the five blocks from the Brine Shark’s Bistro, down a steep incline to the dockside office of **Olad the Alright Shipwright** (overzealous male halfling salesman). Soon, the sounds of the Shipyard district grow more raucous. Gangs of workers sing Consortium lumberjack chants as they haul timber, and a cacophony of saws and hammers fills the air as craftsmen put together hulls in the dry docks. Augustana is sultry in summer; Nairaba and Kitsch fan themselves but heat radiates off the streets. The occasional cool breeze blowing off the Great Salt Harbor brings some relief not just from the heat, but from the mingling smells of sweat, sawdust, oil, and tar.",
@@ -19,61 +19,61 @@ def touring_the_shipyards():
         ])
 
     with cols[1]:
-        ImageModel("Olad", width=400)
+        Image("Olad", width=400)
 
-    TextModel([
+    Text([
         "**The Pert Peach** is a squat, mid-sized ship painted in gaudy colors and replete with the eye-watering scent of perfume belowdeck. Olad gestures expansively on the ship tour. “This pre-owned beauty is one we’re refurbishing! In addition to an excellent galley, there are so many private rooms, useful for storage!” A PC who makes a successful assessment of the ship realizes that while it would make a great passenger or hospital vessel, the ship is much too slow and unwieldy for the rapid transportation the Society often needs."
     ])
 
-    SkillCheckModel("Recall Knowledge on The Pert Peach",
+    SkillCheck("Recall Knowledge on The Pert Peach",
                     [
-                        SkillModel("Warfare Lore", 13, 15),
-                        SkillModel("Sailing Related Lore", 13, 15),
-                        SkillModel("Crafting", 15, 17),
-                        SkillModel("Perception", 17, 19)
+                        Skill("Warfare Lore", 13, 15),
+                        Skill("Sailing Related Lore", 13, 15),
+                        Skill("Crafting", 15, 17),
+                        Skill("Perception", 17, 19)
                     ], model_id="touring_the_shipyard_pert_peach_recall_knowledge")
 
-    TextModel([
+    Text([
         "The Scurvy Scamp is a lean, two-masted brig. “Okay, so you want fast, you want lean, you want this ship! She’s fast and can be used for discreet merchandise,” Olad pauses to wink at Nairaba and Kitsch, “or for stealthy drops of soldiers on an enemy coast.” The Scurvy Scamp is indeed seaworthy and fast, but a PC who makes a successful assessment of the ship realizes that its rudder is in terrible repair and needs replacement. If the price was reduced for the bad rudder, it might be something the Pathfinder Society could fix in a few weeks."
     ])
 
-    SkillCheckModel("Recall Knowledge on The Scurvy Scamp",
+    SkillCheck("Recall Knowledge on The Scurvy Scamp",
                     [
-                        SkillModel("Warfare Lore", 13, 15),
-                        SkillModel("Sailing Related Lore", 13, 15),
-                        SkillModel("Crafting", 15, 17),
-                        SkillModel("Perception", 17, 19)
+                        Skill("Warfare Lore", 13, 15),
+                        Skill("Sailing Related Lore", 13, 15),
+                        Skill("Crafting", 15, 17),
+                        Skill("Perception", 17, 19)
                     ], model_id="touring_the_shipyard_scurvy_scamp_recall_knowledge")
 
-    TextModel([
+    Text([
         "As the players travel to the third ship, aimless sailors wander around the dock area of the shipyard. Some have opened a crate of Sauerton Red and are passing bottles around. The sailors sit on the docks, drinking and watching the nearby ships. Olad detours around a pair of sailors who are stretched out on the dock and then complains, “Those louts are getting in the way of honest work.” He turns to the sailors and shakes a fist. “Hey! We’re trying to work here! Move on!” but the sailors shrug and ignore him. A PC making a successful DC 15 check to Sense Motive might realize that this is unusual behavior for sailors off-duty. Why are they hanging around a busy shipyard instead of enjoying the nearby bars and entertainment a few blocks away?"
     ])
 
-    SkillCheckModel("Sense Motive on sailors",
+    SkillCheck("Sense Motive on sailors",
                     [
-                        SkillModel("Perception", 15, 17)
+                        Skill("Perception", 15, 17)
                     ], model_id="touring_the_shipyard_sense_motive_sailors")
 
-    TextModel([
+    Text([
         "The Lucky Duck is a full-rigged ship with three tall masts. There are recently repaired battle scars on the hull. PCs making a successful DC 13 Perception check to Seek hear squeaking and scurrying noises, and if their check meets or exceeds a DC 18, they spot rats running along the floor, including one that runs directly over Olad’s bare foot, though Olad pretends to make no notice of this. “This ship may need a good scrub down and a little love, but she can carry a lot of personnel and has the space for 50 cannons onboard.” A PC who makes a successful assessment of this ship realizes that this vessel, despite its very prevalent rat problem, is ready now and would serve the Pathfinder fleet just fine."
     ])
 
-    SkillCheckModel("Seek at The Lucky Duck",
+    SkillCheck("Seek at The Lucky Duck",
                     [
-                        SkillModel("Perception", 13, 15)
+                        Skill("Perception", 13, 15)
                     ], model_id="touring_the_shipyard_seek_the_lucky_duck")
 
-    SkillCheckModel("Notice rats at The Lucky Duck",
+    SkillCheck("Notice rats at The Lucky Duck",
                     [
-                        SkillModel("Perception", 18, 20)
+                        Skill("Perception", 18, 20)
                     ], model_id="touring_the_shipyard_notice_rats_the_lucky_duck")
 
-    SkillCheckModel("Recall Knowledge on The Lucky Duck",
+    SkillCheck("Recall Knowledge on The Lucky Duck",
                     [
-                        SkillModel("Warfare Lore", 13, 15),
-                        SkillModel("Sailing Related Lore", 13, 15),
-                        SkillModel("Crafting", 15, 17),
-                        SkillModel("Perception", 17, 19)
+                        Skill("Warfare Lore", 13, 15),
+                        Skill("Sailing Related Lore", 13, 15),
+                        Skill("Crafting", 15, 17),
+                        Skill("Perception", 17, 19)
                     ], model_id="touring_the_shipyard_recall_knowledge_lucky_duck")
 
 

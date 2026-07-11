@@ -6,8 +6,8 @@ from src import Directory
 
 
 class DataManager:
-    def __init__(self, file_path: Path = None):
-        self.file_path = file_path if file_path is not None else Directory.scenario_state_path()
+    def __init__(self, file_path: Path = Directory.scenario_state_path()):
+        self.file_path = file_path
 
 
     def load_data(self):

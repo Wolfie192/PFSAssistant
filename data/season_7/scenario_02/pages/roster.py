@@ -1,10 +1,8 @@
-import streamlit as st
-
-from src.RosterModel import RosterModel
+from src.RosterModel import Roster
 
 
 def roster():
-    RosterModel()
+    Roster()
 
 
 if __name__ == "__main__":

@@ -11,11 +11,13 @@ def data_dir():
 
 
 def season_dir():
-    return Path.joinpath(data_dir(), st.session_state.selected_season.split(":")[0].replace(" ", "_").lower())
+    season = st.session_state.selected_season.split(":")[0].replace(" ", "_").lower()
+    return Path.joinpath(data_dir(), season)
 
 
 def scenario_dir():
-    return Path.joinpath(season_dir(), st.session_state.selected_scenario.split(":")[0].replace(" ", "_").lower())
+    scenario = st.session_state.selected_scenario.split(":")[0].replace(" ", "_").lower()
+    return Path.joinpath(season_dir(), scenario)
 
 
 def scenario_images_dir():

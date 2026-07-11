@@ -3,7 +3,7 @@ import streamlit as st
 from src.DataManager import DataManager
 
 
-class VariableModel:
+class Variable:
     def __init__(self, name: str):
         self.name = name
         self.manager = DataManager()

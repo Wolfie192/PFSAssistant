@@ -3,7 +3,7 @@ import streamlit as st
 from src.DataManager import DataManager
 
 
-class RosterModel:
+class Roster:
     def __init__(self):
         self.id = "roster"
         self.manager = DataManager()

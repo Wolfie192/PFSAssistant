@@ -1,12 +1,12 @@
 import streamlit as st
 
 from src.DataManager import DataManager
-from src.MonsterModel import MonsterModel
-from src.ImageModel import ImageModel
+from src.MonsterModel import Monster
+from src.ImageModel import Image
 
 
 class CombatEncounterModel:
-    def __init__(self, name: str, enemies: list[MonsterModel], model_id: str):
+    def __init__(self, name: str, enemies: list[Monster], model_id: str):
         self.name = name
         self.id = model_id
         self.enemies = enemies
@@ -20,4 +20,4 @@ class CombatEncounterModel:
             for enemy in self.enemies:
                 with st.expander(enemy.name):
                     with st.container(border=True):
-                        st.image(enemy.path, width=enemy.width)
+                        Image(enemy.path, width=enemy.width)
