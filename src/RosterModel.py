@@ -29,6 +29,13 @@ class RosterModel:
         def update_char():
             self._save()
 
+        if "challenge_points" not in st.session_state:
+            st.session_state["challenge_points"] = 0
+        if "tier"  not in st.session_state:
+            st.session_state["tier"] = None
+
+        st.session_state["challenge_points"] = 0
+
         headers = st.columns([0.85, 0.05, 0.05, 0.05])
         headers[0].caption("Character Name")
         headers[1].caption("Level")
@@ -61,10 +68,20 @@ class RosterModel:
 
                 diff = st.session_state["characters"][i]["level"] - st.session_state["tier_min"]
                 cp = {0: 2, 1: 3, 2: 4, 3: 6}.get(diff, 0)
+                st.session_state["challenge_points"] += cp
                 cols[2].markdown(f"**{cp}**")
 
                 if cols[3].button("", icon=":material/delete:", key=f"del_{i}"):
                     delete_index = i
+
+            if st.session_state["challenge_points"] <= 14:
+                st.session_state["tier"] = "Low"
+            elif st.session_state["challenge_points"] >= 19:
+                st.session_state["tier"] = "High"
+            elif st.session_state["challenge_points"] <= 18 and len(st.session_state.get("characters", [])) >= 5:
+                st.session_state["tier"] = "Low"
+            else:
+                st.session_state["tier"] = "High"
 
         if delete_index is not None:
             st.session_state["characters"].pop(delete_index)

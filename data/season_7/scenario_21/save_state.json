@@ -1,0 +1,116 @@
+{
+    "characters": [
+        {
+            "name": "Norman",
+            "level": 5
+        },
+        {
+            "name": "Cayenne",
+            "level": 5
+        },
+        {
+            "name": "Anaxiamander Mazianni",
+            "level": 5
+        },
+        {
+            "name": "Poison Apple Overdose",
+            "level": 6
+        },
+        {
+            "name": "Vasilisa",
+            "level": 6
+        }
+    ],
+    "getting_started_recall_knowledge_geb": {
+        "selected_skills": [
+            "Geb Lore",
+            "Society",
+            "Religion",
+            "Religion",
+            "Society"
+        ],
+        "modifiers": [
+            11,
+            9,
+            9,
+            14,
+            12
+        ],
+        "rolls": [
+            18,
+            7,
+            2,
+            18,
+            19
+        ]
+    },
+    "zoroqs_villa_a1_medicine_check": {
+        "selected_skills": [
+            "Medicine",
+            "Medicine",
+            "Medicine",
+            "Medicine",
+            "Medicine"
+        ],
+        "modifiers": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "rolls": [
+            2,
+            16,
+            1,
+            7,
+            2
+        ]
+    },
+    "zoroqs_villa_a2_nature_occultism_check": {
+        "selected_skills": [
+            "Occultism",
+            "Nature",
+            "Nature",
+            null,
+            "Occultism"
+        ],
+        "modifiers": [
+            7,
+            7,
+            9,
+            0,
+            14
+        ],
+        "rolls": [
+            20,
+            1,
+            2,
+            10,
+            19
+        ]
+    },
+    "zoroqs_villa_a7_nature_check": {
+        "selected_skills": [
+            "Nature",
+            "Nature",
+            "Nature",
+            "Nature",
+            "Nature"
+        ],
+        "modifiers": [
+            7,
+            7,
+            9,
+            0,
+            6
+        ],
+        "rolls": [
+            2,
+            16,
+            14,
+            7,
+            18
+        ]
+    }
+}

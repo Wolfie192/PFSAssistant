@@ -16,7 +16,8 @@ class CombatEncounterModel:
 
 
     def render(self):
-        for enemy in self.enemies:
-            with st.expander(enemy.name):
-                with st.container(border=True):
-                    ImageModel(enemy.path)
+        with st.expander(self.name):
+            for enemy in self.enemies:
+                with st.expander(enemy.name):
+                    with st.container(border=True):
+                        st.image(enemy.path, width=enemy.width)
