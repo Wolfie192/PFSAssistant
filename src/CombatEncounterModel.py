@@ -5,6 +5,9 @@ from src.MonsterModel import Monster
 from src.ImageModel import Image
 
 
+# TODO Update combat encounter model.
+
+
 class CombatEncounterModel:
     def __init__(self, name: str, enemies: list[Monster], model_id: str):
         self.name = name

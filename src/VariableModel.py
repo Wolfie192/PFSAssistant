@@ -23,17 +23,9 @@ class Variable:
         self.manager.save_data(all_data)
 
 
-    def _load(self):
-        all_data = self.manager.load_data()
-        st.session_state[self.name] = all_data[self.name]
-
-
     def render(self):
-        self._load()
-
-        st.number_input(
+        st.session_state[self.name] = st.number_input(
             self.name,
             step=1,
-            on_change=self._save,
-            key=self.name
+            value=st.session_state[self.name]
         )

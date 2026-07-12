@@ -24,4 +24,4 @@ class DataManager:
 
     def get_model_data(self, model_id):
         all_data = self.load_data()
-        return all_data.get(str(model_id), {})
+        return all_data.get(model_id, {})

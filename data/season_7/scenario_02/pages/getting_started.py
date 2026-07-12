@@ -27,8 +27,7 @@ def getting_started():
                     [
                         Skill("Alcohol Lore", 10, 12),
                         Skill("Society", 13, 15)
-                    ],
-                    model_id="getting_started_recall_knowledge_wine")
+                    ])
 
     Text([
         "Kitsch glances furtively around for waitstaff, then dumps the bottle of Sauerton Red into a dropping plant. She holds up her hands for a moment and pulls three bottles of wine o ut of her cheek pouches. The moment she empties her pouches she says, “Sometimes the secret to a good supply chain is knowing when you need to smuggle things in. I think you'll find these bottles are much better, Nairaba.”",
