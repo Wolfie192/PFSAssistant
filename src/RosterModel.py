@@ -6,12 +6,14 @@ from src.DataManager import DataManager
 
 class Roster:
     def __init__(self):
-        self.id = str(uuid.uuid4())
+        if "roster_id" not in st.session_state:
+            st.session_state["roster_id"] = str(uuid.uuid4())
+        self.id = st.session_state["roster_id"]
         self.manager = DataManager()
 
         if "characters" not in st.session_state:
             all_data = self.manager.load_data()
-            st.session_state["characters"] = all_data["characters", []]
+            st.session_state["characters"] = all_data.get("characters", [])
 
         self.render()
 

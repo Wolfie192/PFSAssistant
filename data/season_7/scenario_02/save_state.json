@@ -1,34 +1,66 @@
 {
     "characters": [
         {
-            "id": "886573f6-5db4-417d-b38b-f9b5f0795259",
+            "id": "65d3f98a-2be8-4fca-b2ec-5c6ae134008a",
             "name": "C1",
             "level": 1
         },
         {
-            "id": "4a427c26-8029-4ee3-b53c-709afcb5260d",
+            "id": "5ca31f7a-7092-4cff-b80c-ca8b24322b59",
             "name": "C2",
             "level": 1
         },
         {
-            "id": "188250e4-ae7b-48c4-83cd-83c8c4244d02",
+            "id": "973f4236-ccf4-4a0b-820f-17adbdd5cb26",
             "name": "C3",
             "level": 1
         },
         {
-            "id": "ab4200d6-8d8a-45d7-8e4b-55e6cd63b329",
+            "id": "17f18243-bd6a-44b8-97ea-077af0638aa3",
             "name": "C4",
             "level": 1
         },
         {
-            "id": "923832f4-1dc2-47f5-881f-b8e52317aa34",
+            "id": "c0e72e84-7e4b-4293-b4a5-ae531bb08973",
             "name": "C5",
             "level": 1
         },
         {
-            "id": "963bbe24-0116-4bcd-bf5d-42af544f8a71",
-            "name": "C6",
+            "id": "ac5607ca-cc8d-49fe-8da7-06af2e6a827e",
+            "name": null,
             "level": 1
         }
-    ]
+    ],
+    "c91292fb-7af4-4612-a1f2-973032b26f4b": {
+        "65d3f98a-2be8-4fca-b2ec-5c6ae134008a": {
+            "skill": "Alcohol Lore",
+            "modifier": 0,
+            "roll": 15
+        },
+        "5ca31f7a-7092-4cff-b80c-ca8b24322b59": {
+            "skill": "Society",
+            "modifier": 0,
+            "roll": 10
+        },
+        "973f4236-ccf4-4a0b-820f-17adbdd5cb26": {
+            "skill": "Alcohol Lore",
+            "modifier": 0,
+            "roll": 12
+        },
+        "17f18243-bd6a-44b8-97ea-077af0638aa3": {
+            "skill": "Society",
+            "modifier": 0,
+            "roll": 6
+        },
+        "c0e72e84-7e4b-4293-b4a5-ae531bb08973": {
+            "skill": "Alcohol Lore",
+            "modifier": 0,
+            "roll": 12
+        },
+        "ac5607ca-cc8d-49fe-8da7-06af2e6a827e": {
+            "skill": "Society",
+            "modifier": 0,
+            "roll": 17
+        }
+    }
 }
