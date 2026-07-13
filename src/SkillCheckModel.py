@@ -1,4 +1,3 @@
-import uuid
 import random
 import streamlit as st
 
@@ -13,20 +12,17 @@ class SkillCheck:
         self.skills = skills
         self.manager = DataManager()
 
-        if f"{self.name}_id" not in st.session_state:
-            st.session_state[f"{self.name}_id"] = str(uuid.uuid4())
+        if self.name not in st.session_state:
+            st.session_state[self.name] = {}
 
-        self.id = st.session_state[f"{self.name}_id"]
-
-        if self.id not in st.session_state:
-            all_data = self.manager.load_data()
-            st.session_state[self.id] = all_data.get(self.id, {})
+        all_data = self.manager.load_data()
+        st.session_state[self.name] = all_data.get(self.name, {})
 
         for char in st.session_state["characters"]:
             char_id = char.get("id")
 
-            if char_id not in st.session_state[self.id]:
-                st.session_state[self.id][char_id] = {
+            if char_id not in st.session_state[self.name]:
+                st.session_state[self.name][char_id] = {
                     "skill": None,
                     "modifier": 0,
                     "roll": random.randint(1, 20)
@@ -37,7 +33,7 @@ class SkillCheck:
 
     def _save(self):
         all_data = self.manager.load_data()
-        all_data[self.id] = st.session_state.get(self.id)
+        all_data[self.name] = st.session_state.get(self.name)
         self.manager.save_data(all_data)
 
 
@@ -63,12 +59,12 @@ class SkillCheck:
 
 
     def _update_skill_callback(self, char_id):
-        st.session_state[self.id][char_id]["skill"] = st.session_state[f"{self.id}_{char_id}_skill"]
+        st.session_state[self.name][char_id]["skill"] = st.session_state[f"{self.name}_{char_id}_skill"]
         self._save()
 
 
     def _update_mod_callback(self, char_id):
-        st.session_state[self.id][char_id]["modifier"] = st.session_state[f"{self.id}_{char_id}_modifier"]
+        st.session_state[self.name][char_id]["modifier"] = st.session_state[f"{self.name}_{char_id}_modifier"]
         self._save()
 
 
@@ -88,43 +84,43 @@ class SkillCheck:
 
                 cols[0].markdown(char.get("name"))
 
-                current_skill = st.session_state[self.id][char_id].get("skill")
+                current_skill = st.session_state[self.name][char_id].get("skill")
                 options = [s.name for s in self.skills]
                 idx = options.index(current_skill) if current_skill in options else None
 
-                skill_val = cols[1].selectbox(
+                cols[1].selectbox(
                     "Skill",
                     options=options,
                     index=idx,
                     on_change=self._update_skill_callback,
                     args=(char_id,),
                     label_visibility="collapsed",
-                    key=f"{self.id}_{char_id}_skill"
+                    key=f"{self.name}_{char_id}_skill"
                 )
 
                 cols[2].number_input(
                     "Modifier",
-                    value=st.session_state[self.id][char_id].get("modifier", 0),
+                    value=st.session_state[self.name][char_id].get("modifier", 0),
                     step=1,
                     on_change=self._update_mod_callback,
                     args=(char_id,),
                     label_visibility="collapsed",
-                    key=f"{self.id}_{char_id}_modifier"
+                    key=f"{self.name}_{char_id}_modifier"
                 )
 
-                skill_obj = next((s for s in self.skills if s.name == st.session_state[self.id][char_id]["skill"]), None)
+                skill_obj = next((s for s in self.skills if s.name == st.session_state[self.name][char_id]["skill"]), None)
 
                 if skill_obj:
-                    current_roll = st.session_state[self.id][char_id].get("roll")
-                    current_modifier = st.session_state[self.id][char_id].get("modifier")
+                    current_roll = st.session_state[self.name][char_id].get("roll")
+                    current_modifier = st.session_state[self.name][char_id].get("modifier")
 
                     dc = skill_obj.high_dc if st.session_state["tier"] == "High" else skill_obj.low_dc
                     result = self._get_degree_of_success(current_roll, current_modifier, dc)
                     cols[3].markdown(result)
                 else:
-                    cols[3].markdown("--")
+                    cols[3].markdown(":material/check_indeterminate_small:")
 
-                if cols[4].button("Reroll", icon=":material/casino:", key=f"{self.id}_{char_id}_reroll"):
-                    st.session_state[self.id][char_id]["roll"] = random.randint(1, 20)
+                if cols[4].button("Reroll", icon=":material/casino:", key=f"{self.name}_{char_id}_reroll"):
+                    st.session_state[self.name][char_id]["roll"] = random.randint(1, 20)
                     self._save()
                     st.rerun()

@@ -6,9 +6,6 @@ from src.DataManager import DataManager
 
 class Roster:
     def __init__(self):
-        if "roster_id" not in st.session_state:
-            st.session_state["roster_id"] = str(uuid.uuid4())
-        self.id = st.session_state["roster_id"]
         self.manager = DataManager()
 
         if "characters" not in st.session_state:
@@ -44,6 +41,16 @@ class Roster:
             st.session_state["tier"] = "high"
 
 
+    def _update_name_callback(self, idx, char_id):
+        st.session_state["characters"][idx]["name"] = st.session_state[f"roster_{char_id}_name"]
+        self._save()
+
+
+    def _update_level_callback(self, idx, char_id):
+        st.session_state["characters"][idx]["level"] = st.session_state[f"roster_{char_id}_level"]
+        self._save()
+
+
     def render(self):
         headers = st.columns([0.75, 0.1, 0.1, 0.05])
         headers[0].caption("Character")
@@ -59,9 +66,10 @@ class Roster:
             st.session_state["characters"][i]["name"] = cols[0].text_input(
                 "Name",
                 value=char.get("name", ""),
-                on_change=self._save,
+                on_change=self._update_name_callback,
+                args=(i, char_id,),
                 label_visibility="collapsed",
-                key=f"{self.id}_{char_id}_name"
+                key=f"roster_{char_id}_name"
             )
 
             st.session_state["characters"][i]["level"] = cols[1].number_input(
@@ -69,15 +77,16 @@ class Roster:
                 value=char.get("level", st.session_state["tier_min"]),
                 min_value=st.session_state.get("tier_min", 1),
                 max_value=st.session_state.get("tier_max", 20),
-                on_change=self._save,
+                on_change=self._update_level_callback,
+                args=(i, char_id,),
                 label_visibility="collapsed",
-                key=f"{self.id}_{char_id}_level"
+                key=f"roster_{char_id}_level"
             )
 
             cp = self._calc_cp(st.session_state["characters"][i]["level"])
             cols[2].markdown(f"##### {cp}")
 
-            if cols[3].button("", icon=":material/delete:", key=f"{self.id}_{char_id}_del"):
+            if cols[3].button("", icon=":material/delete:", key=f"roster_{char_id}_del"):
                 st.session_state["characters"].pop(i)
                 self._save()
                 st.rerun()

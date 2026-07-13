@@ -9,7 +9,7 @@ class Variable:
         self.manager = DataManager()
 
         all_data = self.manager.load_data()
-        saved_state = all_data.get(self.name, None)
+        saved_state = all_data.get(self.name, 0)
 
         if self.name not in st.session_state:
             st.session_state[self.name] = saved_state
