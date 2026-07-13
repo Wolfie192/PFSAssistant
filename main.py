@@ -2,7 +2,8 @@ import streamlit as st
 
 from pathlib import Path
 
-from src import Scenarios, Directory
+from src import Directory
+from util import Scenarios
 
 
 def main():
