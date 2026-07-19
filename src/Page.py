@@ -6,4 +6,4 @@ from src import Directory
 
 
 def page(title: str, file_name: str):
-    return st.Page(Path.joinpath(Directory.scenario_pages_dir(), file_name), title=title)
+    return st.Page(Path.joinpath(Directory.scenario_pages_dir(), f"{file_name}.py"), title=title)

@@ -2,6 +2,7 @@ import streamlit as st
 
 from pathlib import Path
 
+
 def get_root():
     return Path(__file__).resolve().parent.parent
 
@@ -20,17 +21,9 @@ def scenario_dir():
     return Path.joinpath(season_dir(), scenario)
 
 
-def scenario_images_dir():
-    return Path.joinpath(scenario_dir(), "images")
-
-
-def scenario_monsters_dir():
-    return Path.joinpath(scenario_dir(), "monsters")
-
-
 def scenario_pages_dir():
     return Path.joinpath(scenario_dir(), "pages")
 
 
-def scenario_state_path():
-    return Path.joinpath(scenario_dir(), "save_state.json")
+def scenario_images_dir():
+    return Path.joinpath(scenario_dir(), "images")
