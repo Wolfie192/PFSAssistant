@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PFSAssistant.iml" filepath="$PROJECT_DIR$/.idea/PFSAssistant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pfsassistant.iml" filepath="$PROJECT_DIR$/.idea/pfsassistant.iml" />
     </modules>
   </component>
 </project>
