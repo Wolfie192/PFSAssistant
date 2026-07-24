@@ -1,2 +1,2 @@
-from .scenario_selector import ScenarioSelectionComboBox
-from .season_selector import SeasonSelectionComboBox
+from .season_scenario_selector import SeasonScenarioCombinedSelector
+from .title_block import TitleBlock

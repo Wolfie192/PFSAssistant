@@ -1,18 +1,18 @@
 from core import CampaignRegistry
-from PySide6.QtWidgets import QComboBox, QApplication
+from PySide6.QtWidgets import QComboBox
 
 
 class ScenarioSelectionComboBox(QComboBox):
-    def __init__(self, parent=None, season: int|None = None, include_dev: bool = False):
-        super().__init__(parent)
+    def __init__(self, controller, season: int|None = None):
+        super().__init__()
+        self.controller = controller
         self.season = season
-        self.include_dev = include_dev
 
-        self.season_changed(self.season, self.include_dev)
+        self.season_changed(self.season)
 
-    def season_changed(self, season: int|None = None, include_dev: bool = False):
+    def season_changed(self, season: int|None = None):
         self.season = season
-        self.include_dev = include_dev
+        include_dev = self.controller.dev_mode
 
         self.clear()
 
@@ -23,12 +23,5 @@ class ScenarioSelectionComboBox(QComboBox):
             self.setEnabled(True)
             self.setPlaceholderText("Choose a scenario")
 
-            scenarios = CampaignRegistry().get_scenarios_for_season(self.season, self.include_dev)
+            scenarios = CampaignRegistry().get_scenarios_for_season(self.season, include_dev)
             self.addItems([s.display_name for s in scenarios])
-
-
-if __name__ == "__main__":
-    app = QApplication()
-    window = ScenarioSelectionComboBox(season=0, include_dev=True)
-    window.show()
-    app.exec()
