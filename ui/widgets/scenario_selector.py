@@ -10,16 +10,9 @@ class ScenarioSelectionComboBox(QComboBox):
 
         self.season_changed(self.season, self.include_dev)
 
-        if self.season is None:
-            self.setEnabled(False)
-            self.setPlaceholderText("Choose a scenario")
-        else:
-            self.setPlaceholderText("Choose a scenario")
-            self.addItems([s.display_name for s in CampaignRegistry().get_scenarios_for_season(self.season, self.include_dev)])
-
     def season_changed(self, season: int|None = None, include_dev: bool = False):
-        if self.season != season: self.season = season
-        if self.include_dev != include_dev: self.include_dev = include_dev
+        self.season = season
+        self.include_dev = include_dev
 
         self.clear()
 
@@ -29,7 +22,9 @@ class ScenarioSelectionComboBox(QComboBox):
         else:
             self.setEnabled(True)
             self.setPlaceholderText("Choose a scenario")
-            self.addItems([s.display_name for s in CampaignRegistry().get_scenarios_for_season(self.season, self.include_dev)])
+
+            scenarios = CampaignRegistry().get_scenarios_for_season(self.season, self.include_dev)
+            self.addItems([s.display_name for s in scenarios])
 
 
 if __name__ == "__main__":

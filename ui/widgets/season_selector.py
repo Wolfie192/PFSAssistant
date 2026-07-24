@@ -6,7 +6,11 @@ class SeasonSelectionComboBox(QComboBox):
     def __init__(self, parent = None):
         super().__init__(parent)
         self.setPlaceholderText("Choose a season")
-        self.addItems([s.display_name for s in CampaignRegistry().get_seasons()])
+
+        seasons = CampaignRegistry().get_seasons()
+
+        for season in seasons:
+            self.addItem(season.display_name, userData=season)
 
 
 if __name__ == "__main__":

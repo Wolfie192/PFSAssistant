@@ -12,7 +12,7 @@ class SeasonScenarioCombinedSelector(QWidget):
         self.season_selector = SeasonSelectionComboBox()
         self.scenario_selector = ScenarioSelectionComboBox(include_dev=include_dev)
 
-        self.season_selector.currentTextChanged.connect(self.season_updated)
+        self.season_selector.currentIndexChanged.connect(self.season_updated)
 
         self.layout = QVBoxLayout()
 
@@ -22,8 +22,9 @@ class SeasonScenarioCombinedSelector(QWidget):
         self.setLayout(self.layout)
 
     def season_updated(self, index: int):
-        self.scenario_selector.season = index
-        self.scenario_selector.season_changed(season=self.season_selector.currentIndex(), include_dev=self.include_dev)
+        season_arg = None if index < 0 else index
+
+        self.scenario_selector.season_changed(season=season_arg, include_dev=self.include_dev)
 
 
 if __name__ == "__main__":
