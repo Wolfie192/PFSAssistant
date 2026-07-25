@@ -1,1 +1,1 @@
-from .scenario_selection_window import ScenarioSelectionView
+from .main_menu import MainMenuView

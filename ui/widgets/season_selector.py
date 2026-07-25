@@ -3,9 +3,10 @@ from PySide6.QtWidgets import QComboBox
 
 
 class SeasonSelectionComboBox(QComboBox):
-    def __init__(self, controller):
-        super().__init__()
-        self.controller = controller
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.dev_mode = parent.dev_mode
+
         self.setPlaceholderText("Choose a season")
 
         seasons = CampaignRegistry().get_seasons()

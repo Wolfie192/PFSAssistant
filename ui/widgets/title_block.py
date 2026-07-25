@@ -6,7 +6,13 @@ from PySide6.QtCore import Qt
 class TitleBlock(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.title_label = QLabel("PFS Assistant")
+        self.dev_mode = parent.dev_mode
+
+        if self.dev_mode:
+            self.title_str = "PFS Assistant (Dev)"
+        else:
+            self.title_str = "PFS Assistant"
+        self.title_label = QLabel(self.title_str)
         self.title_label.setFont(QFont("Arial", 28))
         self.title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -20,10 +26,3 @@ class TitleBlock(QWidget):
         self.layout.setSpacing(0)
 
         self.setLayout(self.layout)
-
-
-if __name__ == "__main__":
-    app = QApplication()
-    window = TitleBlock()
-    window.show()
-    app.exec()
