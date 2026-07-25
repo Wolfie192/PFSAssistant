@@ -1,7 +1,2 @@
-from .engine import (
-PFSGameEngine
-)
-
-from .registry import (
-CampaignRegistry
-)
+from .engine import (PFSGameEngine)
+from .registry import (CampaignRegistry)

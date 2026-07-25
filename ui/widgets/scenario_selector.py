@@ -6,6 +6,8 @@ class ScenarioSelectionComboBox(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
         self.dev_mode = parent.dev_mode
+        self.engine = parent.engine
+
         self.season = None
 
         self.season_changed(self.season)
@@ -23,4 +25,5 @@ class ScenarioSelectionComboBox(QComboBox):
             self.setPlaceholderText("Choose a scenario")
 
             scenarios = CampaignRegistry().get_scenarios_for_season(self.season, self.dev_mode)
-            self.addItems([s.display_name for s in scenarios])
+            for scenario in scenarios:
+                self.addItem(scenario.display_name, userData=scenario)

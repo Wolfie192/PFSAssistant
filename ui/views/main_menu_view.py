@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton
+from ui.scenario_window import ScenarioWindow
 from ui.widgets import TitleBlock, SeasonSelectionComboBox, ScenarioSelectionComboBox
 
 
@@ -6,6 +7,7 @@ class MainMenuView(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.dev_mode = parent.dev_mode
+        self.engine = parent.engine
 
         self.layout = QVBoxLayout(self)
 
@@ -36,15 +38,15 @@ class MainMenuView(QWidget):
 
         self.scenario_selection.season_changed(season=season_arg)
 
-
     def scenario_updated(self, index: int):
         if index < 0:
             self.select_scenario_button.setEnabled(False)
         else:
             self.select_scenario_button.setEnabled(True)
 
-
     def start_season_button_clicked(self):
-        print("Start Scenario Button Clicked")
-        print(self.season_selection.currentText())
-        print(self.scenario_selection.currentText())
+        self.engine.season = self.season_selection.currentData()
+        self.engine.scenario = self.scenario_selection.currentData()
+
+        self.scenario_window = ScenarioWindow(self.engine, self.dev_mode)
+        self.scenario_window.showMaximized()

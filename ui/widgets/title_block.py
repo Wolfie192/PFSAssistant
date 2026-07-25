@@ -7,6 +7,7 @@ class TitleBlock(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.dev_mode = parent.dev_mode
+        self.engine = parent.engine
 
         if self.dev_mode:
             self.title_str = "PFS Assistant (Dev)"
