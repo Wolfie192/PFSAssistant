@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from core.models import Scenario
+from .scenario import Scenario
 
 
 @dataclass

@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from typing import Dict, Optional, List
 
 from core.enums import Proficiency, CheckOutcomes, Tier
-from core.models import Skill, TierDcs
+from .skill import Skill
+from .tier_dcs import TierDcs
 
 
 @dataclass

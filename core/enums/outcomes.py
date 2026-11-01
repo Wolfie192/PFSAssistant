@@ -25,9 +25,11 @@ class CheckOutcomes(Enum):
         Determined the degree of success based on the difference between the total and the DC.
         Adjusts for natural 20 and natural 1.
         """
-        if diff >= 10: outcome = CheckOutcomes.CRIT_SUCCESS
-        if diff >= 0: outcome = CheckOutcomes.SUCCESS
-        if diff > -10:
+        if diff >= 10:
+            outcome = CheckOutcomes.CRIT_SUCCESS
+        elif diff >= 0:
+            outcome = CheckOutcomes.SUCCESS
+        elif diff > -10:
             outcome = CheckOutcomes.FAILURE
         else:
             outcome = CheckOutcomes.CRIT_FAILURE
