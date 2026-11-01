@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from core.models import Skill
+from .skill import Skill
 
 
 @dataclass
